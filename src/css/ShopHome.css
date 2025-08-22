@@ -1,0 +1,40 @@
+/* ShopHome.css */
+.shop-category-card {
+  background: linear-gradient(135deg, #2a2040 0%, #3a185a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px 0 #6a11cb33, 0 2px 8px 0 #2575fc33;
+  transition: box-shadow 0.4s, transform 0.3s, background 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-category-card:hover {
+  background: linear-gradient(120deg, #6a11cb 60%, #2575fc 100%);
+  box-shadow: 0 12px 48px 0 #ff512f88, 0 4px 24px 0 #6a11cb88;
+  transform: scale(1.04) translateY(-6px);
+  z-index: 2;
+}
+
+.shop-category-card h5 {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+.shop-category-card .btn-outline-primary {
+  border-radius: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  border: 1px solid #6a11cb;
+  transition: background 0.3s, color 0.3s;
+}
+
+.shop-category-card .btn-outline-primary:hover {
+  background: #6a11cb;
+  color: #fff;
+  border-color: #2575fc;
+}

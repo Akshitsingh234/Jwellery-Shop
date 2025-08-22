@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body, .container, .container-fluid, .row, .col, .text-outside, h1, h2, h3, h4, h5, h6, p, span, label {
+  color: #fff !important;
+}
+
+/* Prevent card and box text from being overridden */
+.card, .admin-dark-card, .shop-dark-card, .shop-category-card, .login-card-animated {
+  color: inherit;
+}

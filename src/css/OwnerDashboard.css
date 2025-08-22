@@ -1,0 +1,78 @@
+/* OwnerDashboard.css */
+body, .dashboard-bg {
+  background: linear-gradient(135deg, #1a0025 0%, #3a185a 50%, #000 100%) !important;
+  min-height: 100vh;
+}
+
+.animate-welcome {
+  animation: popIn 1s cubic-bezier(.68,-0.55,.27,1.55);
+  color: #6a11cb;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 24px #bdbdbd33;
+  letter-spacing: 2px;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.card.shop-card {
+  transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
+  box-shadow: 0 2px 16px rgba(106,17,203,0.08);
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card.shop-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #6a11cb33, #2575fc33, #ff512f33, #dd247633);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card.shop-card:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 8px 32px 0 rgba(106,17,203,0.18), 0 1.5px 8px 0 rgba(37,117,252,0.12);
+}
+
+.card.shop-card:hover::before {
+  opacity: 0.5;
+  animation: colorGlow 1.2s linear infinite alternate;
+}
+
+@keyframes colorGlow {
+  0% { background: linear-gradient(120deg, #6a11cb33, #2575fc33, #ff512f33, #dd247633);}
+  100% { background: linear-gradient(120deg, #ff512f33, #dd247633, #6a11cb33, #2575fc33);}
+}
+
+.add-design-section {
+  transition: box-shadow 0.4s, background 0.4s;
+  box-shadow: 0 2px 16px rgba(106,17,203,0.10);
+  background: #232526;
+  border-radius: 1rem;
+  padding: 2rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.add-design-section:hover {
+  background: linear-gradient(120deg, #232526 60%, #6a11cb 100%);
+  box-shadow: 0 8px 32px 0 #6a11cb88, 0 2px 12px 0 #2575fc88;
+  animation: addGlow 1.2s linear infinite alternate;
+}
+
+@keyframes addGlow {
+  0% { box-shadow: 0 8px 32px 0 #6a11cb88, 0 2px 12px 0 #2575fc88; }
+  100% { box-shadow: 0 8px 32px 0 #ff512f88, 0 2px 12px 0 #dd247688; }
+}

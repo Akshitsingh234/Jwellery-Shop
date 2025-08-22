@@ -1,0 +1,37 @@
+/* ShopPage.css */
+.shop-dark-card,
+.admin-dark-card,
+.shop-category-card,
+.login-card-animated {
+  background: linear-gradient(135deg, #162447 0%, #1f4068 60%, #21e6c1 100%) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.shop-dark-card {
+  background: linear-gradient(135deg, #f8f6ff 0%, #e3e6ff 100%);
+  color: #3a185a;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px 0 #6a11cb22, 0 2px 8px 0 #2575fc22;
+  transition: box-shadow 0.4s, transform 0.3s, background 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-dark-card:hover {
+  background: linear-gradient(120deg, #e3e6ff 60%, #d1c4e9 100%);
+  box-shadow: 0 12px 48px 0 #6a11cb44, 0 4px 24px 0 #2575fc44;
+  transform: scale(1.04) translateY(-6px);
+  z-index: 2;
+}
+
+.shop-dark-card .card-title {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+}
+
+.shop-dark-card .card-text {
+  color: #6a11cb;
+}
