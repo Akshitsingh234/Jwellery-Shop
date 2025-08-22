@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import "../css/AdminPanel.css"; // reuse admin styles
 
 export default function OwnerRegister() {
@@ -10,7 +10,7 @@ export default function OwnerRegister() {
   const [showPassword, setShowPassword] = useState(false);
   const [notification, setNotification] = useState({ show: false, message: "", type: "success" });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // fetch shops list (so owner can select their shop)
   useEffect(() => {
