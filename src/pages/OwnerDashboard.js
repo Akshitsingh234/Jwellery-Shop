@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import '../css/OwnerDashboard.css';
+import "../css/OwnerDashboard.css";
 
 const OwnerDashboard = () => {
   const { shopId } = useParams();
@@ -25,6 +25,19 @@ const OwnerDashboard = () => {
     "payals",
   ];
 
+  // ✅ Fetch items (memoized to avoid missing dependency warning)
+  const fetchItems = useCallback(async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:8080/api/shops/${shopId}/designs`
+      );
+      const data = await res.json();
+      setItems(data);
+    } catch (err) {
+      console.error("Error fetching items:", err);
+    }
+  }, [shopId]);
+
   // ✅ Check login & fetch items
   useEffect(() => {
     const loggedIn = sessionStorage.getItem("ownerLoggedIn");
@@ -37,20 +50,9 @@ const OwnerDashboard = () => {
 
     setOwnerEmail(sessionStorage.getItem("ownerEmail") || "");
     fetchItems();
-  }, [shopId, navigate]);
+  }, [shopId, navigate, fetchItems]);
 
-  // ✅ Fetch all designs for this shop
-  const fetchItems = async () => {
-    try {
-      const res = await fetch(`http://localhost:8080/api/shops/${shopId}/designs`);
-      const data = await res.json();
-      setItems(data);
-    } catch (err) {
-      console.error("Error fetching items:", err);
-    }
-  };
-
-  // ✅ Add new design with category + image
+  // ✅ Add new design
   const handleAddItem = async (e) => {
     e.preventDefault();
     if (!newItem.category || !newItem.weight || !newItem.type || !newItem.imageFile) return;
@@ -62,10 +64,13 @@ const OwnerDashboard = () => {
       formData.append("type", newItem.type);
       formData.append("image", newItem.imageFile);
 
-      const res = await fetch(`http://localhost:8080/api/shops/${shopId}/designs`, {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        `http://localhost:8080/api/shops/${shopId}/designs`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (res.ok) {
         fetchItems();
@@ -96,7 +101,9 @@ const OwnerDashboard = () => {
         Welcome, Shop Owner!
       </h1>
       <h2 className="mb-4">Owner Dashboard (Shop {shopId})</h2>
-      <p>Logged in as: <strong>{ownerEmail}</strong></p>
+      <p>
+        Logged in as: <strong>{ownerEmail}</strong>
+      </p>
 
       {/* ➕ Add New Design Form */}
       <div className="add-design-section">
@@ -108,11 +115,15 @@ const OwnerDashboard = () => {
               <select
                 className="form-control"
                 value={newItem.category}
-                onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, category: e.target.value })
+                }
               >
                 <option value="">Select Category</option>
                 {categories.map((cat, i) => (
-                  <option key={i} value={cat}>{cat}</option>
+                  <option key={i} value={cat}>
+                    {cat}
+                  </option>
                 ))}
               </select>
             </div>
@@ -123,7 +134,9 @@ const OwnerDashboard = () => {
                 className="form-control"
                 placeholder="Weight (e.g. 10g)"
                 value={newItem.weight}
-                onChange={(e) => setNewItem({ ...newItem, weight: e.target.value })}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, weight: e.target.value })
+                }
               />
             </div>
             <div className="col-md-3">
@@ -132,7 +145,9 @@ const OwnerDashboard = () => {
                 className="form-control"
                 placeholder="Type (Gold, Silver...)"
                 value={newItem.type}
-                onChange={(e) => setNewItem({ ...newItem, type: e.target.value })}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, type: e.target.value })
+                }
               />
             </div>
             <div className="col-md-3">
@@ -140,11 +155,15 @@ const OwnerDashboard = () => {
                 type="file"
                 className="form-control"
                 accept="image/*"
-                onChange={(e) => setNewItem({ ...newItem, imageFile: e.target.files[0] })}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, imageFile: e.target.files[0] })
+                }
               />
             </div>
           </div>
-          <button type="submit" className="btn btn-success w-100">Add Design</button>
+          <button type="submit" className="btn btn-success w-100">
+            Add Design
+          </button>
         </form>
       </div>
 
@@ -165,8 +184,8 @@ const OwnerDashboard = () => {
                   />
                 )}
                 <div className="card-body">
-                  <h5 className="card-title">{item.category}</h5>
-                  <p className="card-text">
+                  <h5 className="card-title text-dark">{item.category}</h5>
+                  <p className="card-text text-dark">
                     <strong>Weight:</strong> {item.weight} <br />
                     <strong>Type:</strong> {item.type}
                   </p>
