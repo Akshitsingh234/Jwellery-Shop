@@ -33,7 +33,7 @@ const CategoryPage = () => {
             <div className="col-md-4 mb-4" key={item.id}>
               <div className="card shadow h-100">
                 <img
-                  src={`http://localhost:8080/api/shops/${shopId}/designs/${item.id}/image`}
+                  src={`https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs/${item.id}/image`}
                   className="card-img-top"
                   alt={item.category}
                   style={{ height: "250px", objectFit: "cover" }}

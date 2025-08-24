@@ -19,7 +19,7 @@ export default function OwnerRegister() {
 
   const fetchShops = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/shops");
+      const res = await axios.get("https://shopbackend2-1.onrender.com/api/shops");
       setShops(res.data);
     } catch (err) {
       console.error("Error fetching shops:", err);
