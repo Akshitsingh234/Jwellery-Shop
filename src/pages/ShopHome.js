@@ -23,7 +23,7 @@ const ShopHome = () => {
   useEffect(() => {
     const fetchShop = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/shops/${shopId}`);
+        const res = await fetch(`https://shopbackend2-1.onrender.com/api/shops/${shopId}`);
         const data = await res.json();
         setShop(data);
       } catch (err) {
@@ -33,7 +33,7 @@ const ShopHome = () => {
 
     const fetchDesigns = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/shops/${shopId}/designs`);
+        const res = await fetch(`https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs`);
         const data = await res.json();
         setDesigns(data);
       } catch (err) {
@@ -86,7 +86,7 @@ const ShopHome = () => {
                   ) : (
                     <div className="text-center">
                       <img
-                        src={`http://localhost:8080/api/shops/${shopId}/designs/${designsForCategory[0].id}/image`}
+                        src={`https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs/${designsForCategory[0].id}/image`}
                         alt={cat.title}
                         style={{ width: "100%", height: "150px", objectFit: "cover" }}
                       />

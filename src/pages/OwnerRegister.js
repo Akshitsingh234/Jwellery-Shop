@@ -75,7 +75,7 @@ export default function OwnerRegister() {
     }
 
     try {
-      await axios.post("http://localhost:8080/api/owner/register", {
+      await axios.post("https://shopbackend2-1.onrender.com/api/owner/register", {
         email: email.trim(),
         password: password.trim(),
         shopId: Number(shopId),

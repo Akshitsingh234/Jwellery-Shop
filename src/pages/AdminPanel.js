@@ -29,7 +29,7 @@ export default function AdminPanel() {
   // ------------------- LOAD SHOPS -------------------
   const fetchShops = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/shops");
+      const res = await axios.get("https://shopbackend2-1.onrender.com/api/shops");
       const data = res.data;
 
       if (Array.isArray(data)) {
@@ -53,7 +53,7 @@ export default function AdminPanel() {
   // ------------------- LOAD OWNERS -------------------
   const fetchOwners = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/owner/all");
+      const res = await axios.get("https://shopbackend2-1.onrender.com/api/owner/all");
       setOwners(res.data);
     } catch (err) {
       console.error("Error fetching owners:", err);
@@ -68,7 +68,7 @@ export default function AdminPanel() {
   // ------------------- LOAD QUERIES -------------------
   const fetchQueries = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:8080/contact/all");
+      const res = await axios.get("https://shopbackend2-1.onrender.com/contact/all");
       setQueries(res.data);
     } catch (err) {
       console.error("Error fetching queries:", err);
@@ -101,7 +101,7 @@ export default function AdminPanel() {
   // ------------------- DELETE SHOP -------------------
   const handleDeleteShop = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/shops/${id}`);
+      await axios.delete(`https://shopbackend2-1.onrender.com/api/shops/${id}`);
       setShops(shops.filter((s) => s.id !== id));
       showNotification("Shop deleted successfully!", "success");
     } catch (err) {
@@ -115,7 +115,7 @@ export default function AdminPanel() {
   // ------------------- DELETE QUERY -------------------
   const handleDeleteQuery = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/contact/${id}`);
+      await axios.delete(`https://shopbackend2-1.onrender.com/contact/${id}`);
       setQueries(queries.filter((q) => q.id !== id));
       showNotification("Query deleted successfully!", "success");
     } catch (err) {

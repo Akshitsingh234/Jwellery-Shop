@@ -8,7 +8,7 @@ const CategoryPage = () => {
   const fetchDesigns = useCallback(async () => {
     try {
       const res = await fetch(
-        `http://localhost:8080/api/shops/${shopId}/designs/category/${category}`
+        `https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs/category/${category}`
       );
       const data = await res.json();
       setDesigns(data);

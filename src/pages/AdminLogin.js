@@ -18,7 +18,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setError("");
 
-    const res = await fetch("http://localhost:8080/admin/login", {
+    const res = await fetch("https://shopbackend2-1.onrender.com/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

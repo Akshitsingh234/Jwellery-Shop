@@ -23,7 +23,7 @@ function ContactPage() {
     e.preventDefault();
 
     // Send form data to backend
-    const response = await fetch("http://localhost:8080/contact/submit", {
+    const response = await fetch("https://shopbackend2-1.onrender.com/contact/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

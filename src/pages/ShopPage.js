@@ -17,7 +17,7 @@ export default function ShopPage() {
 
   const fetchShops = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/shops");
+      const res = await axios.get("https://shopbackend2-1.onrender.com/api/shops");
       const data = res.data;
 
       if (Array.isArray(data)) {

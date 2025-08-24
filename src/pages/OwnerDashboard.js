@@ -29,7 +29,7 @@ const OwnerDashboard = () => {
   const fetchItems = useCallback(async () => {
     try {
       const res = await fetch(
-        `http://localhost:8080/api/shops/${shopId}/designs`
+        `https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs`
       );
       const data = await res.json();
       setItems(data);
@@ -65,7 +65,7 @@ const OwnerDashboard = () => {
       formData.append("image", newItem.imageFile);
 
       const res = await fetch(
-        `http://localhost:8080/api/shops/${shopId}/designs`,
+        `https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs`,
         {
           method: "POST",
           body: formData,
@@ -86,7 +86,7 @@ const OwnerDashboard = () => {
   // ✅ Delete design
   const handleDeleteItem = async (id) => {
     try {
-      await fetch(`http://localhost:8080/api/shops/${shopId}/designs/${id}`, {
+      await fetch(`https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs/${id}`, {
         method: "DELETE",
       });
       fetchItems();
@@ -177,7 +177,7 @@ const OwnerDashboard = () => {
               <div className="card h-100 shadow shop-card">
                 {item.id && (
                   <img
-                    src={`http://localhost:8080/api/shops/${shopId}/designs/${item.id}/image`}
+                    src={`https://shopbackend2-1.onrender.com/api/shops/${shopId}/designs/${item.id}/image`}
                     alt={item.category}
                     className="card-img-top"
                     style={{ height: "200px", objectFit: "cover" }}
