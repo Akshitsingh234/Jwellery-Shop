@@ -48,7 +48,7 @@ export default function OwnerRegister() {
     }
 
     try {
-      await axios.post("http://localhost:8080/admin/shop/register", {
+      await axios.post("https://shopbackend2-1.onrender.com/admin/shop/register", {
         shopName: shopName.trim(),
         address: address.trim(),
       });
